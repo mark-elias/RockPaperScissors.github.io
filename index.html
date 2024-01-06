@@ -1,23 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RockPaperScissors</title>
-    <link rel="stylesheet" href="./styles.css">
-</head>
-<body>
-        <main>
-            <h1>hello world</h1>
-            <h2>Score</h2>
-            <h2>Player: 0</h2>
-            <h2>Computer: 2</h2>
-            <p>would you like to play a game?</p>
-            <button>Rock</button>
-            <button>Paper</button>
-            <button>Scissors</button>
-        </main>
-    
+    <link rel="stylesheet" href="./styles.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <main>
+      <h1>Rock Paper Scissors Game</h1>
+      <section class="scoreboard">
+          <h2>Player: 0</h2>
+          <h2>Computer: 2</h2>
+      </section>
+      <section class="prompt">
+          <p>would you like to play a game?</p>
+      </section>
+      <section class="options">
+          <i class="fa-solid fa-hand-back-fist"></i>
+          <i class="fa-solid fa-hand"></i>
+          <i class="fa-solid fa-hand-scissors"></i>
+      </section>
+
+    </main>
+
+    <!-- Add the <audio> element -->
+  <!-- <audio id="backgroundMusic" autoplay loop>
+    <source src="./assets/audio/itty-bitty-8-bit-kevin-macleod-main-version-03-13-7983.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio> -->
+
     <script src="./script.js"></script>
-</body>
+    <!-- Font Awesome Icons -->
+    <script
+      src="https://kit.fontawesome.com/0f8cc9978b.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
