@@ -1,5 +1,6 @@
 let playerScore = document.querySelector("#player-score");
 let computerScore = document.querySelector("#computer-score");
+let tieScore = document.querySelector("#tie-score");
 
 let promptOutput = document.querySelector("#prompt-output")
 
@@ -10,6 +11,10 @@ let scissorsIcon = document.querySelector("#scissors");
 
 let playerSelection;
 let computerSelection;
+
+let playerPoints = 0;
+let computerPoints = 0;
+let tieRounds = 0;
 
 rockIcon.addEventListener("click", ()=> playGame("rock"));
 paperIcon.addEventListener("click", ()=> playGame("paper"));
@@ -22,7 +27,8 @@ function writeToPrompt(text){
     promptOutput.scrollTop = promptOutput.scrollHeight;
 }
 
-writeToPrompt(`Choose between Rock, Paper, or Scissors to start a game \n====================`);
+writeToPrompt("Would you like to play a game??");
+writeToPrompt(`Select Rock, Paper, or Scissors to start a game \n==============================================`);
 
 function playGame(selection){
     playerSelection = selection;
@@ -30,9 +36,11 @@ function playGame(selection){
 
     writeToPrompt(`Player: ${playerSelection}`);
     writeToPrompt(`Computer: ${computerSelection}`);
-    
-    theRef(playerSelection, computerSelection);
-    writeToPrompt(`====================`);
+
+    let roundWinner = theRef(playerSelection, computerSelection);
+    scoreTracker(roundWinner);
+
+    writeToPrompt(`=========================================`);
     
 }
 
@@ -52,33 +60,47 @@ function computerPlay() {
 
 function theRef(player, computer) {
     if (player === computer) {
-      console.log("tieee");
+      writeToPrompt("tieee ... lame")
       return "tie";
     } else if (player === "rock") {
       if (computer === "scissors") {
-        console.log("player wins, rock beats scissors");
+        writeToPrompt("Player wins!! Rock beats Scissors")
         return "player";
       } else {
-        console.log("compuer wins, rocks loses to paper");
+        writeToPrompt("Computer Wins :(( Rock loses to Paper")
         return "computer";
       }
     } else if (player === "paper") {
       if (computer === "rock") {
-        console.log("player wins, paper beats rock");
+        writeToPrompt("Player Wins!! Paper beats Rock");
         return "player";
       } else {
-        console.log("computer wins, papers loses to scissors");
+        writeToPrompt("Computer Wins :(( Paper loses to Scissors");
         return "computer";
       }
     }
     // player chose scissors
     else {
       if (computer === "paper") {
-        console.log("player wins, scissors beats paper");
+        writeToPrompt("Player Wins!! Scissors beats Paper");
         return "player";
       } else {
-        console.log("computer wins, scissors loses to rock");
+        writeToPrompt("Computer Wins :(( Scissors loses to Rock")
         return "computer";
       }
     }
+  }
+
+  function scoreTracker(point) {
+    if (point === "player") {
+      playerPoints++;
+    } else if (point === "computer") {
+      computerPoints++;
+    } else {
+      tieRounds++;
+    }
+
+    playerScore.textContent = playerPoints.toString();
+    computerScore.textContent = computerPoints.toString();
+    tieScore.textContent = tieRounds.toString();
   }
